@@ -7,21 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		10704E26235E434D0093FA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E25235E434D0093FA4C /* AppDelegate.swift */; };
-		10704E28235E434D0093FA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E27235E434D0093FA4C /* SceneDelegate.swift */; };
-		10704E2A235E434D0093FA4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E29235E434D0093FA4C /* ViewController.swift */; };
-		10704E2F235E434E0093FA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10704E2E235E434E0093FA4C /* Assets.xcassets */; };
-		10704E32235E434E0093FA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10704E30235E434E0093FA4C /* LaunchScreen.storyboard */; };
+		10704E46235E48F40093FA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10704E3B235E48F40093FA4C /* LaunchScreen.storyboard */; };
+		10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3E235E48F40093FA4C /* AppDelegate.swift */; };
+		10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3F235E48F40093FA4C /* SceneDelegate.swift */; };
+		10704E49235E48F40093FA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10704E43235E48F40093FA4C /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		10704E22235E434D0093FA4C /* Komoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		10704E25235E434D0093FA4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		10704E27235E434D0093FA4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		10704E29235E434D0093FA4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		10704E2E235E434E0093FA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		10704E31235E434E0093FA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		10704E33235E434E0093FA4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10704E3C235E48F40093FA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		10704E3E235E48F40093FA4C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		10704E3F235E48F40093FA4C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		10704E43235E48F40093FA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		10704E45235E48F40093FA4C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +52,69 @@
 		10704E24235E434D0093FA4C /* Komoot */ = {
 			isa = PBXGroup;
 			children = (
-				10704E25235E434D0093FA4C /* AppDelegate.swift */,
-				10704E27235E434D0093FA4C /* SceneDelegate.swift */,
-				10704E29235E434D0093FA4C /* ViewController.swift */,
-				10704E2E235E434E0093FA4C /* Assets.xcassets */,
-				10704E30235E434E0093FA4C /* LaunchScreen.storyboard */,
-				10704E33235E434E0093FA4C /* Info.plist */,
+				10704E39235E48F40093FA4C /* Classes */,
+				10704E41235E48F40093FA4C /* Resources */,
+				10704E44235E48F40093FA4C /* Supporting Files */,
 			);
 			path = Komoot;
+			sourceTree = "<group>";
+		};
+		10704E39235E48F40093FA4C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				10704E3D235E48F40093FA4C /* Main */,
+				10704E3A235E48F40093FA4C /* Root */,
+				10704E40235E48F40093FA4C /* User Interface */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		10704E3A235E48F40093FA4C /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				10704E3B235E48F40093FA4C /* LaunchScreen.storyboard */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		10704E3D235E48F40093FA4C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				10704E3E235E48F40093FA4C /* AppDelegate.swift */,
+				10704E3F235E48F40093FA4C /* SceneDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		10704E40235E48F40093FA4C /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		10704E41235E48F40093FA4C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				10704E42235E48F40093FA4C /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		10704E42235E48F40093FA4C /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				10704E43235E48F40093FA4C /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		10704E44235E48F40093FA4C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10704E45235E48F40093FA4C /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,8 +175,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10704E32235E434E0093FA4C /* LaunchScreen.storyboard in Resources */,
-				10704E2F235E434E0093FA4C /* Assets.xcassets in Resources */,
+				10704E49235E48F40093FA4C /* Assets.xcassets in Resources */,
+				10704E46235E48F40093FA4C /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,19 +187,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10704E2A235E434D0093FA4C /* ViewController.swift in Sources */,
-				10704E26235E434D0093FA4C /* AppDelegate.swift in Sources */,
-				10704E28235E434D0093FA4C /* SceneDelegate.swift in Sources */,
+				10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */,
+				10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		10704E30235E434E0093FA4C /* LaunchScreen.storyboard */ = {
+		10704E3B235E48F40093FA4C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				10704E31235E434E0093FA4C /* Base */,
+				10704E3C235E48F40093FA4C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -274,7 +326,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6ZM4T69MX;
-				INFOPLIST_FILE = Komoot/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Komoot/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -293,7 +345,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6ZM4T69MX;
-				INFOPLIST_FILE = Komoot/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Komoot/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

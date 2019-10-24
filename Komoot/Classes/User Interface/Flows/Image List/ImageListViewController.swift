@@ -17,7 +17,7 @@ class ImageListViewController: UIViewController {
     
     private lazy var dataSource: UITableViewDiffableDataSource<Section, Photo> = {
         UITableViewDiffableDataSource<Section, Photo>(tableView: tableView) { tableView, indexPath, photo in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(for: indexPath)
             cell.textLabel?.text = photo.name
             return cell
         }
@@ -46,9 +46,10 @@ class ImageListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: .start, style: .plain, target: self, action: #selector(rightBarButtonItemTouched))
         
         tableView.dataSource = dataSource
+        tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(cellType: UITableViewCell.self)
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
         snapshot.appendSections(Section.allCases)

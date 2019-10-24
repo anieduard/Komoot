@@ -11,6 +11,9 @@
 		10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3E235E48F40093FA4C /* AppDelegate.swift */; };
 		10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3F235E48F40093FA4C /* SceneDelegate.swift */; };
 		10704E49235E48F40093FA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10704E43235E48F40093FA4C /* Assets.xcassets */; };
+		10D0460D236212B0004DD3B3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0460C236212B0004DD3B3 /* Reusable.swift */; };
+		10D0460F236212CF004DD3B3 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */; };
+		10D0461123621343004DD3B3 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0461023621343004DD3B3 /* UIView+Nib.swift */; };
 		10D20A68235F8E90001F55B0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20A67235F8E90001F55B0 /* Coordinator.swift */; };
 		10D20A6A235F8EE6001F55B0 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20A69235F8EE6001F55B0 /* RootCoordinator.swift */; };
 		10D20A6D235F9161001F55B0 /* ImageListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D20A6C235F9161001F55B0 /* ImageListCoordinator.swift */; };
@@ -25,6 +28,9 @@
 		10704E3F235E48F40093FA4C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		10704E43235E48F40093FA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10704E45235E48F40093FA4C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10D0460C236212B0004DD3B3 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		10D0461023621343004DD3B3 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		10D20A67235F8E90001F55B0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		10D20A69235F8EE6001F55B0 /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		10D20A6C235F9161001F55B0 /* ImageListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCoordinator.swift; sourceTree = "<group>"; };
@@ -91,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				10D20A65235F8E6B001F55B0 /* Flows */,
+				10D0460A236212A4004DD3B3 /* Utilities */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -118,6 +125,24 @@
 				10704E45235E48F40093FA4C /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		10D0460A236212A4004DD3B3 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				10D0460B236212A4004DD3B3 /* Reusable */,
+				10D0461023621343004DD3B3 /* UIView+Nib.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		10D0460B236212A4004DD3B3 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				10D0460C236212B0004DD3B3 /* Reusable.swift */,
+				10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		10D20A65235F8E6B001F55B0 /* Flows */ = {
@@ -222,8 +247,11 @@
 				10D20A71235F920F001F55B0 /* ImageListViewModel.swift in Sources */,
 				10D20A6D235F9161001F55B0 /* ImageListCoordinator.swift in Sources */,
 				10D20A6A235F8EE6001F55B0 /* RootCoordinator.swift in Sources */,
+				10D0460F236212CF004DD3B3 /* UITableView+Reusable.swift in Sources */,
+				10D0460D236212B0004DD3B3 /* Reusable.swift in Sources */,
 				10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */,
 				10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */,
+				10D0461123621343004DD3B3 /* UIView+Nib.swift in Sources */,
 				10D20A68235F8E90001F55B0 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

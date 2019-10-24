@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootCoordinator: Coordinator {
+final class RootCoordinator: Coordinator {
     
     private(set) var childCoordinators: [Coordinator] = []
     

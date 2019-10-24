@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageListCoordinator: Coordinator {
+final class ImageListCoordinator: Coordinator {
     
     private(set) var childCoordinators: [Coordinator] = []
     

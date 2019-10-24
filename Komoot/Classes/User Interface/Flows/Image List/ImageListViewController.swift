@@ -8,17 +8,17 @@
 
 import UIKit
 
-class ImageListViewController: UIViewController {
+final class ImageListViewController: UIViewController {
     
     // MARK: - Private properties
     
     private let viewModel: ImageListViewModel
     private let tableView = UITableView()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Section, Photo> = {
-        UITableViewDiffableDataSource<Section, Photo>(tableView: tableView) { tableView, indexPath, photo in
-            let cell = tableView.dequeueReusableCell(for: indexPath)
-            cell.textLabel?.text = photo.name
+    private lazy var dataSource: UITableViewDiffableDataSource<Section, Image> = {
+        UITableViewDiffableDataSource<Section, Image>(tableView: tableView) { tableView, indexPath, image in
+            let cell: ImageTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.textLabel?.text = image.name
             return cell
         }
     }()
@@ -49,11 +49,11 @@ class ImageListViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
-        tableView.register(cellType: UITableViewCell.self)
+        tableView.register(cellType: ImageTableViewCell.self)
         
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Photo>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Image>()
         snapshot.appendSections(Section.allCases)
-        snapshot.appendItems([Photo(name: "a"), Photo(name: "b"), Photo(name: "c")], toSection: .photos)
+        snapshot.appendItems([Image(name: "a"), Image(name: "b"), Image(name: "c")], toSection: .images)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
     
@@ -83,10 +83,10 @@ class ImageListViewController: UIViewController {
 private extension ImageListViewController {
     
     enum Section: CaseIterable {
-        case photos
+        case images
     }
 
-    struct Photo: Hashable {
+    struct Image: Hashable {
         let name: String
     }
 }

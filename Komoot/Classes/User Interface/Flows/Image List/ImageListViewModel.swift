@@ -12,6 +12,6 @@ protocol ImageListViewModel: AnyObject {
     
 }
 
-class ImageListViewModelImpl: ImageListViewModel {
+final class ImageListViewModelImpl: ImageListViewModel {
     
 }

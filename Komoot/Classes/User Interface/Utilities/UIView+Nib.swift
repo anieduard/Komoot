@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol NibRepresentable {
+protocol NibRepresentable: AnyObject {
     static var nib: UINib { get }
 }
 

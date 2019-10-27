@@ -8,6 +8,7 @@
 
 import Foundation
 import struct CoreLocation.CLLocationCoordinate2D
+import class UIKit.UIImage
 
 final class ImageService {
     
@@ -50,6 +51,15 @@ final class ImageService {
         let request = URLRequest(url: flickrURL(from: coordinates))
         networkManager.performRequest(request) { (result: (Result<Response, Error>)) in
             completion(result.map { $0.photos.photos.elements.first })
+        }
+    }
+    
+    func fetchImage(from photo: Photo?, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+        guard let photo = photo else { completion(.failure(NetworkError.noData)); return }
+        
+        let request = URLRequest(url: photo.url)
+        networkManager.performRequest(request) { result in
+            completion(result.map { UIImage(data: $0) })
         }
     }
 }

@@ -12,6 +12,12 @@ final class ImageTableViewCell: UITableViewCell {
     
     // MARK: - Public properties
     
+    var _image: UIImage? {
+        didSet {
+            _imageView.image = _image
+        }
+    }
+    
     // MARK: - Private properties
     
     private let _imageView = UIImageView()

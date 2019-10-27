@@ -16,10 +16,10 @@ final class ImageListViewController: UIViewController {
     private let viewModel: ImageListViewModel
     private let tableView = UITableView()
     
-    private lazy var dataSource: UITableViewDiffableDataSource<Section, Image> = {
-        UITableViewDiffableDataSource<Section, Image>(tableView: tableView) { tableView, indexPath, image in
+    private lazy var dataSource: UITableViewDiffableDataSource<ImageListViewModelImpl.Section, UIImage?> = {
+        UITableViewDiffableDataSource<ImageListViewModelImpl.Section, UIImage?>(tableView: tableView) { tableView, indexPath, image in
             let cell: ImageTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-            cell.textLabel?.text = image.name
+            cell._image = image
             return cell
         }
     }()
@@ -43,7 +43,11 @@ final class ImageListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        initView()
+        initBindings()
+    }
+    
+    private func initView() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: .start, style: .plain, target: self, action: #selector(rightBarButtonItemTouched))
         
         tableView.dataSource = dataSource
@@ -51,16 +55,15 @@ final class ImageListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         tableView.register(cellType: ImageTableViewCell.self)
-        
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Image>()
-        snapshot.appendSections(Section.allCases)
-        snapshot.appendItems([Image(name: "a"), Image(name: "b"), Image(name: "c")], toSection: .images)
-        dataSource.apply(snapshot, animatingDifferences: true)
-        
-        viewModel.fetchPhoto(for: CLLocationCoordinate2D(latitude: 46.773050, longitude: 23.604153))
     }
     
     // MARK: - Bindings
+    
+    private func initBindings() {
+        viewModel.reloadData = { [weak self] dataSourceSnapshot in
+            self?.dataSource.apply(dataSourceSnapshot, animatingDifferences: true)
+        }
+    }
     
     // MARK: - User interaction
     
@@ -75,22 +78,11 @@ final class ImageListViewController: UIViewController {
     }
     
     private func startButtonTouched() {
-        
+        viewModel.didTouchStart()
     }
     
     private func stopButtonTouched() {
-        
-    }
-}
-
-private extension ImageListViewController {
-    
-    enum Section: CaseIterable {
-        case images
-    }
-
-    struct Image: Hashable {
-        let name: String
+        viewModel.didTouchStop()
     }
 }
 

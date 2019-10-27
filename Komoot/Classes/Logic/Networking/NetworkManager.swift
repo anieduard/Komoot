@@ -32,32 +32,50 @@ final class NetworkManager {
     
     // MARK: - Logic
     
-    func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
+    func performRequest(_ request: URLRequest, completion: @escaping (Result<Data, Error>) -> Void) {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
                 return
             }
             
             let status = (response as? HTTPURLResponse)?.statusCode ?? 0
             if status < 200 || status > 300 {
-                completion(.failure(NetworkError.httpError))
+                DispatchQueue.main.async {
+                    completion(.failure(NetworkError.httpError))
+                }
                 return
             }
             
             guard let data = data else {
-                completion(.failure(NetworkError.noData))
+                DispatchQueue.main.async {
+                    completion(.failure(NetworkError.noData))
+                }
                 return
             }
             
-            do {
-                let object = try JSONDecoder().decode(T.self, from: data)
-                completion(.success(object))
-            } catch {
-                completion(.failure(error))
+            DispatchQueue.main.async {
+                completion(.success(data))
             }
         }
         task.resume()
+    }
+    
+    func performRequest<T: Decodable>(_ request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
+        performRequest(request) { result in
+            do {
+                let object = try JSONDecoder().decode(T.self, from: result.get())
+                DispatchQueue.main.async {
+                    completion(.success(object))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
     }
 }
 

@@ -20,7 +20,19 @@ final class ImageListCoordinator: Coordinator {
     
     func start() {
         let viewModel = ImageListViewModelImpl()
+        viewModel.flowDelegate = self
         let viewController = ImageListViewController(viewModel: viewModel)
         navigationController.setViewControllers([viewController], animated: true)
+    }
+}
+
+// MARK: - ImageListViewModelFlowDelegate
+
+extension ImageListCoordinator: ImageListViewModelFlowDelegate {
+    
+    func shouldShowError(_ error: Error, on viewModel: ImageListViewModel) {
+        let alertController = UIAlertController(title: "An error ocurred", message: error.localizedDescription, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+        navigationController.present(alertController, animated: true)
     }
 }

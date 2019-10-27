@@ -11,6 +11,13 @@
 		10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3E235E48F40093FA4C /* AppDelegate.swift */; };
 		10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3F235E48F40093FA4C /* SceneDelegate.swift */; };
 		10704E49235E48F40093FA4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10704E43235E48F40093FA4C /* Assets.xcassets */; };
+		10A4526F2364A18F009EF96E /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4526E2364A18F009EF96E /* APIConstants.swift */; };
+		10A452712365BE76009EF96E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452702365BE76009EF96E /* NetworkManager.swift */; };
+		10A452742365C779009EF96E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452732365C779009EF96E /* Photo.swift */; };
+		10A452762365C87A009EF96E /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452752365C87A009EF96E /* Photos.swift */; };
+		10A452782365C959009EF96E /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452772365C959009EF96E /* ImageService.swift */; };
+		10A4527A2365CF76009EF96E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452792365CF76009EF96E /* Response.swift */; };
+		10A4527C2365DA8D009EF96E /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4527B2365DA8D009EF96E /* FailableDecodable.swift */; };
 		10D0460D236212B0004DD3B3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0460C236212B0004DD3B3 /* Reusable.swift */; };
 		10D0460F236212CF004DD3B3 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */; };
 		10D0461123621343004DD3B3 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0461023621343004DD3B3 /* UIView+Nib.swift */; };
@@ -30,6 +37,13 @@
 		10704E3F235E48F40093FA4C /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		10704E43235E48F40093FA4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10704E45235E48F40093FA4C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10A4526E2364A18F009EF96E /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		10A452702365BE76009EF96E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		10A452732365C779009EF96E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		10A452752365C87A009EF96E /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		10A452772365C959009EF96E /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		10A452792365CF76009EF96E /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		10A4527B2365DA8D009EF96E /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
 		10D0460C236212B0004DD3B3 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		10D0461023621343004DD3B3 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
@@ -84,6 +98,7 @@
 			children = (
 				10D046172362339A004DD3B3 /* Constants */,
 				10704E3D235E48F40093FA4C /* Main */,
+				10A4526B2364A15E009EF96E /* Logic */,
 				10704E40235E48F40093FA4C /* User Interface */,
 			);
 			path = Classes;
@@ -133,6 +148,43 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		10A4526B2364A15E009EF96E /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				10A452722365C730009EF96E /* Models */,
+				10A4526C2364A15E009EF96E /* Networking */,
+				10A4526D2364A15E009EF96E /* Services */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		10A4526C2364A15E009EF96E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				10A452702365BE76009EF96E /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		10A4526D2364A15E009EF96E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				10A452772365C959009EF96E /* ImageService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		10A452722365C730009EF96E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				10A4527B2365DA8D009EF96E /* FailableDecodable.swift */,
+				10A452732365C779009EF96E /* Photo.swift */,
+				10A452752365C87A009EF96E /* Photos.swift */,
+				10A452792365CF76009EF96E /* Response.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		10D0460A236212A4004DD3B3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +230,7 @@
 		10D046172362339A004DD3B3 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				10A4526E2364A18F009EF96E /* APIConstants.swift */,
 				10D04618236233C3004DD3B3 /* Layout.swift */,
 			);
 			path = Constants;
@@ -281,15 +334,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10A4527A2365CF76009EF96E /* Response.swift in Sources */,
 				10D20A6F235F9200001F55B0 /* ImageListViewController.swift in Sources */,
 				10D20A71235F920F001F55B0 /* ImageListViewModel.swift in Sources */,
+				10A4526F2364A18F009EF96E /* APIConstants.swift in Sources */,
 				10D20A6D235F9161001F55B0 /* ImageListCoordinator.swift in Sources */,
+				10A452762365C87A009EF96E /* Photos.swift in Sources */,
 				10D04616236232CF004DD3B3 /* ImageTableViewCell.swift in Sources */,
 				10D20A6A235F8EE6001F55B0 /* RootCoordinator.swift in Sources */,
 				10D04619236233C3004DD3B3 /* Layout.swift in Sources */,
 				10D0460F236212CF004DD3B3 /* UITableView+Reusable.swift in Sources */,
 				10D0460D236212B0004DD3B3 /* Reusable.swift in Sources */,
+				10A452742365C779009EF96E /* Photo.swift in Sources */,
 				10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */,
+				10A4527C2365DA8D009EF96E /* FailableDecodable.swift in Sources */,
+				10A452712365BE76009EF96E /* NetworkManager.swift in Sources */,
+				10A452782365C959009EF96E /* ImageService.swift in Sources */,
 				10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */,
 				10D0461123621343004DD3B3 /* UIView+Nib.swift in Sources */,
 				10D20A68235F8E90001F55B0 /* Coordinator.swift in Sources */,

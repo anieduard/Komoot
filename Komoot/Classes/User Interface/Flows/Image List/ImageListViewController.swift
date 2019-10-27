@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class ImageListViewController: UIViewController {
     
@@ -55,6 +56,8 @@ final class ImageListViewController: UIViewController {
         snapshot.appendSections(Section.allCases)
         snapshot.appendItems([Image(name: "a"), Image(name: "b"), Image(name: "c")], toSection: .images)
         dataSource.apply(snapshot, animatingDifferences: true)
+        
+        viewModel.fetchPhoto(for: CLLocationCoordinate2D(latitude: 46.773050, longitude: 23.604153))
     }
     
     // MARK: - Bindings

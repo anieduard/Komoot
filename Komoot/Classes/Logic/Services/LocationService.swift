@@ -24,11 +24,14 @@ final class LocationService: NSObject {
         
         locationManager.delegate = self
         locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 100
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
     }
+    
+    private var previousLocation: CLLocation?
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -36,8 +39,18 @@ final class LocationService: NSObject {
 extension LocationService: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
         guard let location = locations.last else { return }
         
+        print(String(describing: previousLocation))
         print(location.coordinate.latitude, location.coordinate.longitude)
+        
+        let distance = previousLocation?.distance(from: location) ?? 0
+        
+        previousLocation = location
+        
+        guard distance >= 100 else { return }
+        
+        print("DISTANCE:", "\(Int(distance))m")
     }
 }

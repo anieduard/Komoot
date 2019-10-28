@@ -18,6 +18,7 @@
 		10A452782365C959009EF96E /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452772365C959009EF96E /* ImageService.swift */; };
 		10A4527A2365CF76009EF96E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A452792365CF76009EF96E /* Response.swift */; };
 		10A4527C2365DA8D009EF96E /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4527B2365DA8D009EF96E /* FailableDecodable.swift */; };
+		10A4527E23677F05009EF96E /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A4527D23677F05009EF96E /* LocationService.swift */; };
 		10D0460D236212B0004DD3B3 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0460C236212B0004DD3B3 /* Reusable.swift */; };
 		10D0460F236212CF004DD3B3 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */; };
 		10D0461123621343004DD3B3 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D0461023621343004DD3B3 /* UIView+Nib.swift */; };
@@ -44,6 +45,7 @@
 		10A452772365C959009EF96E /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		10A452792365CF76009EF96E /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		10A4527B2365DA8D009EF96E /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
+		10A4527D23677F05009EF96E /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		10D0460C236212B0004DD3B3 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		10D0460E236212CF004DD3B3 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		10D0461023621343004DD3B3 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				10A452772365C959009EF96E /* ImageService.swift */,
+				10A4527D23677F05009EF96E /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			files = (
 				10A4527A2365CF76009EF96E /* Response.swift in Sources */,
 				10D20A6F235F9200001F55B0 /* ImageListViewController.swift in Sources */,
+				10A4527E23677F05009EF96E /* LocationService.swift in Sources */,
 				10D20A71235F920F001F55B0 /* ImageListViewModel.swift in Sources */,
 				10A4526F2364A18F009EF96E /* APIConstants.swift in Sources */,
 				10D20A6D235F9161001F55B0 /* ImageListCoordinator.swift in Sources */,

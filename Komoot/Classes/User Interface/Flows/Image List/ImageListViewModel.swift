@@ -6,9 +6,8 @@
 //  Copyright © 2019 Ani Eduard. All rights reserved.
 //
 
-import Foundation
-import CoreLocation
 import UIKit
+import struct CoreLocation.CLLocationCoordinate2D
 
 protocol ImageListViewModelFlowDelegate: AnyObject {
     func shouldShowError(_ error: Error, on viewModel: ImageListViewModel)
@@ -33,14 +32,15 @@ final class ImageListViewModelImpl: ImageListViewModel {
     
     // MARK: - Private properties
     
+    private let locationService: LocationService
     private let imageService: ImageService
     private var dataSourceSnapshot: DataSourceType
     
     // MARK: - Init
     
     init() {
-        self.imageService = ImageService()
-        
+        locationService = LocationService()
+        imageService = ImageService()
         dataSourceSnapshot = DataSourceType()
         dataSourceSnapshot.appendSections(Section.allCases)
     }
@@ -79,6 +79,8 @@ final class ImageListViewModelImpl: ImageListViewModel {
         
     }
 }
+
+// MARK: - Section
 
 extension ImageListViewModelImpl {
     

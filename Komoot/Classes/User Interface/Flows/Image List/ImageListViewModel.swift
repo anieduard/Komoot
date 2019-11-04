@@ -42,6 +42,8 @@ final class ImageListViewModelImpl: ImageListViewModel {
         locationService = LocationService()
         imageService = ImageService()
         dataSourceSnapshot = DataSourceType()
+        
+        locationService.delegate = self
         dataSourceSnapshot.appendSections(Section.allCases)
     }
     
@@ -72,11 +74,20 @@ final class ImageListViewModelImpl: ImageListViewModel {
     // MARK: - User interaction
     
     func didTouchStart() {
-        fetchPhoto(for: CLLocationCoordinate2D(latitude: 10, longitude: 20))
+        locationService.startUpdatingLocation()
     }
     
     func didTouchStop() {
-        
+        locationService.stopUpdatingLocation()
+    }
+}
+
+// MARK: - LocationServiceDelegate
+
+extension ImageListViewModelImpl: LocationServiceDelegate {
+    
+    func userDidPassThreshold(with coordinate: CLLocationCoordinate2D) {
+        fetchPhoto(for: coordinate)
     }
 }
 

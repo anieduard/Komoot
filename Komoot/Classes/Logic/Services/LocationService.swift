@@ -8,13 +8,20 @@
 
 import CoreLocation
 
+protocol LocationServiceDelegate: AnyObject {
+    func userDidPassThreshold(with coordinate: CLLocationCoordinate2D)
+}
+
 final class LocationService: NSObject {
     
     // MARK: - Public properties
     
+    weak var delegate: LocationServiceDelegate?
+    
     // MARK: - Private properties
     
     private let locationManager: CLLocationManager
+    private var lastKnownLocation: CLLocation?
     
     // MARK: - Init
     
@@ -26,12 +33,19 @@ final class LocationService: NSObject {
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 100
+        locationManager.distanceFilter = .distanceThreshold
         locationManager.requestAlwaysAuthorization()
+    }
+    
+    // MARK: - Logic
+    
+    func startUpdatingLocation() {
         locationManager.startUpdatingLocation()
     }
     
-    private var previousLocation: CLLocation?
+    func stopUpdatingLocation() {
+        locationManager.stopUpdatingLocation()
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -39,18 +53,18 @@ final class LocationService: NSObject {
 extension LocationService: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
         guard let location = locations.last else { return }
         
-        print(String(describing: previousLocation))
-        print(location.coordinate.latitude, location.coordinate.longitude)
+        let distance = lastKnownLocation?.distance(from: location) ?? 0
+        lastKnownLocation = location
         
-        let distance = previousLocation?.distance(from: location) ?? 0
-        
-        previousLocation = location
-        
-        guard distance >= 100 else { return }
-        
-        print("DISTANCE:", "\(Int(distance))m")
+        guard distance >= .distanceThreshold else { return }
+        delegate?.userDidPassThreshold(with: location.coordinate)
     }
+}
+
+// MARK: - Constants
+
+private extension CLLocationDistance {
+    static let distanceThreshold: CLLocationDistance = 100
 }

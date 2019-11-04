@@ -49,23 +49,15 @@ final class ImageListViewModelImpl: ImageListViewModel {
     
     // MARK: - Logic
     
-    private func fetchPhoto(for coordinates: CLLocationCoordinate2D) {
-        imageService.fetchPhoto(for: coordinates) { [weak self, weak imageService] result in
+    private func fetchPhoto(for coordinates: CLLocationCoordinate2D) {        
+        imageService.fetchImage(for: coordinates) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
-            case .success(let photo):
-                imageService?.fetchImage(from: photo) { result in
-                    switch result {
-                    case .success(let image):
-                        guard let self = self else { return }
-                        self.dataSourceSnapshot.appendItems([image], toSection: .images)
-                        self.reloadData?(self.dataSourceSnapshot)
-                    case .failure(let error):
-                        guard let self = self else { return }
-                        self.flowDelegate?.shouldShowError(error, on: self)
-                    }
-                }
+            case .success(let image):
+                self.dataSourceSnapshot.appendItems([image], toSection: .images)
+                self.reloadData?(self.dataSourceSnapshot)
             case .failure(let error):
-                guard let self = self else { return }
                 self.flowDelegate?.shouldShowError(error, on: self)
             }
         }

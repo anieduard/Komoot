@@ -47,19 +47,30 @@ final class ImageService {
         return url
     }
     
-    func fetchPhoto(for coordinates: CLLocationCoordinate2D, completion: @escaping (Result<Photo?, Error>) -> Void) {
+    private func fetchPhoto(for coordinates: CLLocationCoordinate2D, completion: @escaping (Result<Photo?, Error>) -> Void) {
         let request = URLRequest(url: flickrURL(from: coordinates))
         networkManager.performRequest(request) { (result: (Result<Response, Error>)) in
             completion(result.map { $0.photos.photos.elements.first })
         }
     }
     
-    func fetchImage(from photo: Photo?, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+    private func fetchImage(from photo: Photo?, completion: @escaping (Result<UIImage?, Error>) -> Void) {
         guard let photo = photo else { completion(.failure(NetworkError.noData)); return }
         
         let request = URLRequest(url: photo.url)
         networkManager.performRequest(request) { result in
             completion(result.map { UIImage(data: $0) })
+        }
+    }
+    
+    func fetchImage(for coordinates: CLLocationCoordinate2D, completion: @escaping (Result<UIImage?, Error>) -> Void) {
+        fetchPhoto(for: coordinates) { [weak self] result in
+            switch result {
+            case .success(let photo):
+                self?.fetchImage(from: photo, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

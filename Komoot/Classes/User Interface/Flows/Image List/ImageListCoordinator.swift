@@ -41,32 +41,35 @@ extension ImageListCoordinator: ImageListViewModelFlowDelegate {
         UIApplication.shared.open(url)
     }
     
+    private func addOpenSettingsActionIfPossible(to actions: inout [UIAlertAction]) {
+        guard canOpenSettings else { return }
+        actions.append(UIAlertAction(title: "Settings", style: .default, handler: openSettings))
+    }
+    
     func shouldShowError(_ error: Error, on viewModel: ImageListViewModel) {
         guard alertController == nil else { return }
         
-        let alertController = UIAlertController(title: "An error ocurred", message: error.localizedDescription, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-        navigationController.present(alertController, animated: true)
+        let alertController = showAlertController(on: navigationController, title: "An error ocurred", message: error.localizedDescription)
         self.alertController = alertController
     }
     
     func shouldShowLocationDisabledAlert(on viewModel: ImageListViewModel) {
         guard alertController == nil else { return }
         
-        let alertController = UIAlertController(title: "Location Services are disabled", message: "Please allow Location Services in Settings.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-        alertController.addAction(UIAlertAction(title: "Settings", style: .default, handler: openSettings))
-        navigationController.present(alertController, animated: true)
+        var actions: [UIAlertAction] = [.ok]
+        addOpenSettingsActionIfPossible(to: &actions)
+        
+        let alertController = showAlertController(on: navigationController, title: "Location Services are disabled", message: "Please allow Location Services in Settings.", actions: actions)
         self.alertController = alertController
     }
     
     func shouldShowLocationWhenInUseAlert(on viewModel: ImageListViewModel) {
         guard alertController == nil else { return }
         
-        let alertController = UIAlertController(title: "Location Services are available only while in use", message: "Please Always Allow Location Services in Settings or use the app more until the iOS asks for permission in order to be able to use the app in the background as well.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-        alertController.addAction(UIAlertAction(title: "Settings", style: .default, handler: openSettings))
-        navigationController.present(alertController, animated: true)
+        var actions: [UIAlertAction] = [.ok]
+        addOpenSettingsActionIfPossible(to: &actions)
+        
+        let alertController = showAlertController(on: navigationController, title: "Location Services are available only while in use", message: "Please Always Allow Location Services in Settings or use the app more until the iOS asks for permission in order to be able to use the app in the background as well.", actions: actions)
         self.alertController = alertController
     }
 }

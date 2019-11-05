@@ -64,7 +64,7 @@ final class ImageListViewController: UIViewController {
             self?.dataSource.apply(dataSourceSnapshot, animatingDifferences: true)
         }
         
-        viewModel.errorOcurred = { [weak self] error in
+        viewModel.locationTrackingFailure = { [weak self] error in
             self?.navigationItem.rightBarButtonItem?.title = .start
         }
     }

@@ -11,11 +11,13 @@ import struct CoreLocation.CLLocationCoordinate2D
 
 protocol ImageListViewModelFlowDelegate: AnyObject {
     func shouldShowError(_ error: Error, on viewModel: ImageListViewModel)
+    func shouldShowLocationDisabledAlert(on viewModel: ImageListViewModel)
+    func shouldShowLocationWhenInUseAlert(on viewModel: ImageListViewModel)
 }
 
 protocol ImageListViewModel: AnyObject {
     var reloadData: ((ImageListViewModelImpl.DataSourceType) -> Void)? { get set }
-    var errorOcurred: ((Error) -> Void)? { get set }
+    var locationTrackingFailure: ((Error?) -> Void)? { get set }
     
     func didTouchStart()
     func didTouchStop()
@@ -30,7 +32,7 @@ final class ImageListViewModelImpl: ImageListViewModel {
     weak var flowDelegate: ImageListViewModelFlowDelegate?
     
     var reloadData: ((DataSourceType) -> Void)?
-    var errorOcurred: ((Error) -> Void)?
+    var locationTrackingFailure: ((Error?) -> Void)?
     
     // MARK: - Private properties
     
@@ -72,14 +74,25 @@ final class ImageListViewModelImpl: ImageListViewModel {
     
     private func didFailWithError(_ error: Error) {
         locationService.stopUpdatingLocation()
-        errorOcurred?(error)
+        locationTrackingFailure?(error)
         flowDelegate?.shouldShowError(error, on: self)
     }
     
     // MARK: - User interaction
     
     func didTouchStart() {
-        locationService.startUpdatingLocation()
+        switch locationService.authorizationStatus {
+        case .notDetermined, .restricted, .denied:
+            locationTrackingFailure?(nil)
+            flowDelegate?.shouldShowLocationDisabledAlert(on: self)
+        case .authorizedAlways:
+            locationService.startUpdatingLocation()
+        case .authorizedWhenInUse:
+            locationService.startUpdatingLocation()
+            flowDelegate?.shouldShowLocationWhenInUseAlert(on: self)
+        @unknown default:
+            fatalError("New cases have been added.")
+        }
     }
     
     func didTouchStop() {

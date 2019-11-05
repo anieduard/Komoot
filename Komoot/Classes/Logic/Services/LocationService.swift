@@ -19,6 +19,8 @@ final class LocationService: NSObject {
     
     weak var delegate: LocationServiceDelegate?
     
+    var authorizationStatus: CLAuthorizationStatus { return CLLocationManager.authorizationStatus() }
+    
     // MARK: - Private properties
     
     private let locationManager: CLLocationManager

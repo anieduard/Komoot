@@ -12,8 +12,6 @@ import class UIKit.UIImage
 
 final class ImageService {
     
-    // MARK: - Public properties
-    
     // MARK: - Private properties
     
     private let networkManager: NetworkManager

@@ -55,7 +55,12 @@ final class ImageListViewModelImpl: ImageListViewModel {
             
             switch result {
             case .success(let image):
-                self.dataSourceSnapshot.appendItems([image], toSection: .images)
+                if let firstItem = self.dataSourceSnapshot.itemIdentifiers.first {
+                    self.dataSourceSnapshot.insertItems([image], beforeItem: firstItem)
+                } else {
+                    self.dataSourceSnapshot.appendItems([image], toSection: .images)
+                }
+                
                 self.reloadData?(self.dataSourceSnapshot)
             case .failure(let error):
                 self.flowDelegate?.shouldShowError(error, on: self)

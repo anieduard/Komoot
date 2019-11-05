@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104591CA2371805200514593 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104591C92371805200514593 /* NetworkError.swift */; };
 		10704E46235E48F40093FA4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10704E3B235E48F40093FA4C /* LaunchScreen.storyboard */; };
 		10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3E235E48F40093FA4C /* AppDelegate.swift */; };
 		10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10704E3F235E48F40093FA4C /* SceneDelegate.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		104591C92371805200514593 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		10704E22235E434D0093FA4C /* Komoot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Komoot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10704E3C235E48F40093FA4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10704E3E235E48F40093FA4C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		104591C82371803000514593 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				104591C92371805200514593 /* NetworkError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		10704E19235E434D0093FA4C = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +173,7 @@
 		10A4526C2364A15E009EF96E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				104591C82371803000514593 /* Errors */,
 				10A452702365BE76009EF96E /* NetworkManager.swift */,
 			);
 			path = Networking;
@@ -352,6 +363,7 @@
 				10A452742365C779009EF96E /* Photo.swift in Sources */,
 				10704E47235E48F40093FA4C /* AppDelegate.swift in Sources */,
 				10A4527C2365DA8D009EF96E /* FailableDecodable.swift in Sources */,
+				104591CA2371805200514593 /* NetworkError.swift in Sources */,
 				10A452712365BE76009EF96E /* NetworkManager.swift in Sources */,
 				10A452782365C959009EF96E /* ImageService.swift in Sources */,
 				10704E48235E48F40093FA4C /* SceneDelegate.swift in Sources */,

@@ -11,15 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    private var locationService: LocationService?
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-        if let location = launchOptions?[UIApplication.LaunchOptionsKey.location] {
-            print(location)
-            locationService = LocationService()
-        }
         
         return true
     }

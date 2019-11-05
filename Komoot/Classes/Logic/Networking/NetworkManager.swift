@@ -78,17 +78,3 @@ final class NetworkManager {
         }
     }
 }
-
-enum NetworkError: Error {
-    case httpError
-    case noData
-    
-    var localizedDescription: String {
-        switch self {
-        case .httpError:
-            return "Something went wrong. Please try again."
-        case .noData:
-            return "The server returned no data."
-        }
-    }
-}

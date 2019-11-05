@@ -63,6 +63,10 @@ final class ImageListViewController: UIViewController {
         viewModel.reloadData = { [weak self] dataSourceSnapshot in
             self?.dataSource.apply(dataSourceSnapshot, animatingDifferences: true)
         }
+        
+        viewModel.errorOcurred = { [weak self] error in
+            self?.navigationItem.rightBarButtonItem?.title = .start
+        }
     }
     
     // MARK: - User interaction

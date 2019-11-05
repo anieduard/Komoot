@@ -15,6 +15,7 @@ protocol ImageListViewModelFlowDelegate: AnyObject {
 
 protocol ImageListViewModel: AnyObject {
     var reloadData: ((ImageListViewModelImpl.DataSourceType) -> Void)? { get set }
+    var errorOcurred: ((Error) -> Void)? { get set }
     
     func didTouchStart()
     func didTouchStop()
@@ -29,6 +30,7 @@ final class ImageListViewModelImpl: ImageListViewModel {
     weak var flowDelegate: ImageListViewModelFlowDelegate?
     
     var reloadData: ((DataSourceType) -> Void)?
+    var errorOcurred: ((Error) -> Void)?
     
     // MARK: - Private properties
     
@@ -63,9 +65,15 @@ final class ImageListViewModelImpl: ImageListViewModel {
                 
                 self.reloadData?(self.dataSourceSnapshot)
             case .failure(let error):
-                self.flowDelegate?.shouldShowError(error, on: self)
+                self.didFailWithError(error)
             }
         }
+    }
+    
+    private func didFailWithError(_ error: Error) {
+        locationService.stopUpdatingLocation()
+        errorOcurred?(error)
+        flowDelegate?.shouldShowError(error, on: self)
     }
     
     // MARK: - User interaction
@@ -83,8 +91,12 @@ final class ImageListViewModelImpl: ImageListViewModel {
 
 extension ImageListViewModelImpl: LocationServiceDelegate {
     
-    func userDidPassThreshold(with coordinate: CLLocationCoordinate2D) {
+    func userDidPassThreshold(with coordinate: CLLocationCoordinate2D, on service: LocationService) {
         fetchPhoto(for: coordinate)
+    }
+    
+    func didFailWithError(_ error: Error, on service: LocationService) {
+        didFailWithError(error)
     }
 }
 

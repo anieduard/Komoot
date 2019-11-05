@@ -9,7 +9,8 @@
 import CoreLocation
 
 protocol LocationServiceDelegate: AnyObject {
-    func userDidPassThreshold(with coordinate: CLLocationCoordinate2D)
+    func userDidPassThreshold(with coordinate: CLLocationCoordinate2D, on service: LocationService)
+    func didFailWithError(_ error: Error, on service: LocationService)
 }
 
 final class LocationService: NSObject {
@@ -59,7 +60,11 @@ extension LocationService: CLLocationManagerDelegate {
         lastKnownLocation = location
         
         guard distance >= .distanceThreshold else { return }
-        delegate?.userDidPassThreshold(with: location.coordinate)
+        delegate?.userDidPassThreshold(with: location.coordinate, on: self)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        delegate?.didFailWithError(error, on: self)
     }
 }
 

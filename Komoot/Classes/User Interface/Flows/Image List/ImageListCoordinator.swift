@@ -13,6 +13,7 @@ final class ImageListCoordinator: Coordinator {
     private(set) var childCoordinators: [Coordinator] = []
     
     private let navigationController: UINavigationController
+    private weak var alertController: UIAlertController?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -31,8 +32,11 @@ final class ImageListCoordinator: Coordinator {
 extension ImageListCoordinator: ImageListViewModelFlowDelegate {
     
     func shouldShowError(_ error: Error, on viewModel: ImageListViewModel) {
+        guard alertController == nil else { return }
+        
         let alertController = UIAlertController(title: "An error ocurred", message: error.localizedDescription, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default))
         navigationController.present(alertController, animated: true)
+        self.alertController = alertController
     }
 }
